@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 ilteris kaplan. All rights reserved.
 //
 
-#import "IKMainViewController.h"
-#import "IKMainViewCalendarCell.h"
+#import "IKMonthViewController.h"
+#import "IKMonthViewCalendarCell.h"
 
-@interface IKMainViewController ()
+@interface IKMonthViewController ()
 
 @end
 
-@implementation IKMainViewController
+@implementation IKMonthViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +46,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    IKMainViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
+    IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
     UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
     cell.imageView.image = image;
     return cell;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ilteris kaplan. All rights reserved.
 //
 
-#import "IKMainViewCalendarCell.h"
+#import "IKMonthViewCalendarCell.h"
 
-@implementation IKMainViewCalendarCell
+@implementation IKMonthViewCalendarCell
 
 - (id)initWithFrame:(CGRect)frame
 {
