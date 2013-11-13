@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2063D351833C5BD00827203 /* IKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2063D341833C5BD00827203 /* IKMainViewController.m */; };
 		A277D01D185666EB001DF08B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01C185666EB001DF08B /* Foundation.framework */; };
 		A277D01F185666EB001DF08B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01E185666EB001DF08B /* CoreGraphics.framework */; };
 		A277D021185666EB001DF08B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D020185666EB001DF08B /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2063D331833C5BD00827203 /* IKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMainViewController.h; path = Walker/IKMainViewController.h; sourceTree = "<group>"; };
+		A2063D341833C5BD00827203 /* IKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMainViewController.m; path = Walker/IKMainViewController.m; sourceTree = "<group>"; };
 		A277D019185666EB001DF08B /* Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A277D01C185666EB001DF08B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A277D01E185666EB001DF08B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,8 @@
 				A277D05118567A7A001DF08B /* IKMonthViewCalendarCell.m */,
 				A277D04D1856757A001DF08B /* IKMonthViewController.h */,
 				A277D04E1856757A001DF08B /* IKMonthViewController.m */,
+				A2063D331833C5BD00827203 /* IKMainViewController.h */,
+				A2063D341833C5BD00827203 /* IKMainViewController.m */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -261,6 +266,7 @@
 				A277D04F1856757A001DF08B /* IKMonthViewController.m in Sources */,
 				A277D05218567A7A001DF08B /* IKMonthViewCalendarCell.m in Sources */,
 				A277D02D185666EB001DF08B /* IKAppDelegate.m in Sources */,
+				A2063D351833C5BD00827203 /* IKMainViewController.m in Sources */,
 				A277D029185666EB001DF08B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
