@@ -15,6 +15,23 @@
 
 @implementation IKMonthViewController
 
+
+
+- (id)init
+{
+    NSString *nibFileToLoad = @"IKMonthViewController";
+    
+    ATPHelpViewController* _viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IKMonthViewController"];
+    
+    self = [super initWithNibName:nibFileToLoad bundle:nil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

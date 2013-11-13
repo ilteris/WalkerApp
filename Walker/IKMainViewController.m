@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IKMonthViewController *currentPage;
 @property (nonatomic, strong) IKMonthViewController *nextPage;
 @property (nonatomic, assign) BOOL transitioning;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -31,6 +32,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.scrollView.delegate = self;
+    
+    _transitioning          = NO;
+    
+    
+    _currentPage = [[IKMonthViewController alloc] init];
+    _nextPage    = [[IKMonthViewController alloc] init];
+    
+    
+    [_scrollView addSubview:_currentPage.view];
+	[_scrollView addSubview:_nextPage.view];
+    
 	// Do any additional setup after loading the view.
 }
 
