@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="oS9-m8-1hM">
             <objects>
-                <navigationController definesPresentationContext="YES" id="c2j-bo-s67" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="c2j-bo-s67" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vP5-Lr-uGl">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hs-Nd-9AF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-411" y="-8"/>
+            <point key="canvasLocation" x="-747" y="-2"/>
         </scene>
         <!--Month View Controller-->
         <scene sceneID="3EV-Hj-brT">
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zad-i1-wiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-8"/>
+            <point key="canvasLocation" x="-171" y="-2"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

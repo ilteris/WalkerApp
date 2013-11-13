@@ -7,8 +7,13 @@
 //
 
 #import "IKMainViewController.h"
+#import "IKMonthViewController.h"
+
 
 @interface IKMainViewController ()
+@property (nonatomic, strong) IKMonthViewController *currentPage;
+@property (nonatomic, strong) IKMonthViewController *nextPage;
+@property (nonatomic, assign) BOOL transitioning;
 
 @end
 
