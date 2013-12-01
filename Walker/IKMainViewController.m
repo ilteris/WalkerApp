@@ -130,7 +130,6 @@
 		if (lowerNumber != _nextPage.pageIndex)
 		{
 			[self applyNewIndex:lowerNumber pageController:_nextPage];
-            
 		}
 	}
 	else
