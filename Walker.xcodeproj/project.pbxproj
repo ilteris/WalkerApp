@@ -19,6 +19,7 @@
 		A277D038185666EB001DF08B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D020185666EB001DF08B /* UIKit.framework */; };
 		A277D040185666EB001DF08B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A277D03E185666EB001DF08B /* InfoPlist.strings */; };
 		A277D042185666EB001DF08B /* WalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D041185666EB001DF08B /* WalkerTests.m */; };
+		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		A277D03D185666EB001DF08B /* WalkerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WalkerTests-Info.plist"; sourceTree = "<group>"; };
 		A277D03F185666EB001DF08B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A277D041185666EB001DF08B /* WalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkerTests.m; sourceTree = "<group>"; };
+		A277D04B1856732E001DF08B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Walker/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		A277D010185666EB001DF08B = {
 			isa = PBXGroup;
 			children = (
+				A277D04B1856732E001DF08B /* Main.storyboard */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A277D04C1856732E001DF08B /* Main.storyboard in Resources */,
 				A277D027185666EB001DF08B /* InfoPlist.strings in Resources */,
 				A277D02F185666EB001DF08B /* Images.xcassets in Resources */,
 			);
@@ -442,6 +446,7 @@
 				A277D047185666EB001DF08B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A277D048185666EB001DF08B /* Build configuration list for PBXNativeTarget "WalkerTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +455,7 @@
 				A277D04A185666EB001DF08B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
