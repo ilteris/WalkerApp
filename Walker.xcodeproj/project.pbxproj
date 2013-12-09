@@ -22,6 +22,7 @@
 		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
 		A277D04F1856757A001DF08B /* IKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D04E1856757A001DF08B /* IKMainViewController.m */; };
 		A277D05218567A7A001DF08B /* IKMainViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D05118567A7A001DF08B /* IKMainViewCalendarCell.m */; };
+		A277D05418567BE0001DF08B /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A277D05318567BDF001DF08B /* slice1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		A277D04E1856757A001DF08B /* IKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMainViewController.m; path = Walker/IKMainViewController.m; sourceTree = "<group>"; };
 		A277D05018567A7A001DF08B /* IKMainViewCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMainViewCalendarCell.h; path = Walker/IKMainViewCalendarCell.h; sourceTree = "<group>"; };
 		A277D05118567A7A001DF08B /* IKMainViewCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMainViewCalendarCell.m; path = Walker/IKMainViewCalendarCell.m; sourceTree = "<group>"; };
+		A277D05318567BDF001DF08B /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A277D04B1856732E001DF08B /* Main.storyboard */,
+				A277D05318567BDF001DF08B /* slice1.jpg */,
 				A277D05018567A7A001DF08B /* IKMainViewCalendarCell.h */,
 				A277D05118567A7A001DF08B /* IKMainViewCalendarCell.m */,
 				A277D04D1856757A001DF08B /* IKMainViewController.h */,
@@ -235,6 +238,7 @@
 			files = (
 				A277D04C1856732E001DF08B /* Main.storyboard in Resources */,
 				A277D027185666EB001DF08B /* InfoPlist.strings in Resources */,
+				A277D05418567BE0001DF08B /* slice1.jpg in Resources */,
 				A277D02F185666EB001DF08B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

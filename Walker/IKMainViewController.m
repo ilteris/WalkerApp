@@ -7,6 +7,7 @@
 //
 
 #import "IKMainViewController.h"
+#import "IKMainViewCalendarCell.h"
 
 @interface IKMainViewController ()
 
@@ -38,14 +39,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return 12;
 }
 
 // The cell that is returned must be retrieved from a call to - dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    return nil;
+    IKMainViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
+    UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
+    cell.imageView.image = image;
+    return cell;
 }
 
 
