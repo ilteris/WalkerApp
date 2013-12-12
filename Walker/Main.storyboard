@@ -60,6 +60,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="ljO-CH-XtK"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgO-oY-mgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,17 +77,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="nHC-F2-OE1" customClass="IKMainViewScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Tno-eg-YmN" id="33Z-pg-TRG"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="MFh-Tr-fbx"/>
-                    <connections>
-                        <outlet property="scrollView" destination="nHC-F2-OE1" id="acP-LF-msm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zad-i1-wiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,7 +11,7 @@
 
 @interface IKMainViewScrollView ()
 
-@property (nonatomic, strong) NSMutableArray *visibleLabels;
+@property (nonatomic, strong) NSMutableArray *visibleYearViews;
 @property (nonatomic, strong) UIView *labelContainerView;
 
 @end
@@ -25,11 +25,13 @@
     {
         self.contentSize = CGSizeMake(self.frame.size.width, 1136);
         
-        _visibleLabels = [[NSMutableArray alloc] init];
+        _visibleYearViews = [[NSMutableArray alloc] init];
         
         _labelContainerView = [[UIView alloc] init];
         self.labelContainerView.frame = CGRectMake(0, 0, self.contentSize.width/2, self.contentSize.height);
         [self addSubview:self.labelContainerView];
+        
+        
         
         [self.labelContainerView setUserInteractionEnabled:NO];
         
@@ -55,7 +57,7 @@
         self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
         
         // move content by the same amount so it appears to stay still
-        for (UILabel *label in self.visibleLabels) {
+        for (UILabel *label in self.visibleYearViews) {
             CGPoint center = [self.labelContainerView convertPoint:label.center toView:self];
             center.y += (centerOffsetY - currentOffset.y);
             label.center = [self convertPoint:center toView:self.labelContainerView];
@@ -80,24 +82,30 @@
 
 #pragma mark - Label Tiling
 
-- (UIImageView *)insertLabel
+- (UIView *)insertLabel
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 586)];
     [label setNumberOfLines:3];
     [label setText:@"1024 Block Street\nShaffer, CA\n95014"];
     UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 586)];
     imageView.image = [UIImage imageNamed:@"Slice 1.png"];
-    [self.labelContainerView addSubview:imageView];
     
-    return imageView;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UICollectionViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"monthViewController"];
+    NSLog(@"controller.view is %@", controller.view);
+    [controller.view setFrame:CGRectMake(0, 0, 320, 586)];
+    [self.labelContainerView addSubview:controller.view];
+
+    return controller.view;
 }
 
 - (CGFloat)placeNewLabelOnBottom:(CGFloat)bottomEdge
 {
     NSLog(@"here place new label on bottom");
-    UIImageView *label = [self insertLabel];
-    [self.visibleLabels addObject:label]; // add rightmost label at the end of the array
-    
+    UIView *label = [self insertLabel];
+    [self.visibleYearViews addObject:label]; // add rightmost label at the end of the array
+    NSLog(@"labrl is %@", label);
     CGRect frame = [label frame];
     frame.origin.y = bottomEdge;
     frame.origin.x = 0;//[self.labelContainerView bounds].size.height - frame.size.height;
@@ -109,8 +117,8 @@
 - (CGFloat)placeNewLabelOnTop:(CGFloat)topEdge
 {
     NSLog(@"here place new label on top");
-    UIImageView *label = [self insertLabel];
-    [self.visibleLabels insertObject:label atIndex:0]; // add leftmost label at the beginning of the array
+    UIView *label = [self insertLabel];
+    [self.visibleYearViews insertObject:label atIndex:0]; // add leftmost label at the beginning of the array
     
     CGRect frame = [label frame];
     frame.origin.y = topEdge - frame.size.height;
@@ -125,15 +133,15 @@
 {
     // the upcoming tiling logic depends on there already being at least one label in the visibleLabels array, so
     // to kick off the tiling we need to make sure there's at least one label
-    NSLog(@"self.visibleLabels is %@", self.visibleLabels);
+    NSLog(@"self.visibleLabels is %@", self.visibleYearViews);
     
-    if ([self.visibleLabels count] == 0)
+    if ([self.visibleYearViews count] == 0)
     {
         [self placeNewLabelOnBottom:minimumVisibleY];
     }
     
     // add labels that are missing on right side
-    UILabel *lastLabel = [self.visibleLabels lastObject];
+    UIView *lastLabel = [self.visibleYearViews lastObject];
     CGFloat bottomEdge = CGRectGetMaxY([lastLabel frame]);
     NSLog(@"bottomEdge is %f", bottomEdge);
     NSLog(@"maximumVisibleY is %f", maximumVisibleY);
@@ -145,7 +153,7 @@
     }
     
     // add labels that are missing on left side
-    UILabel *firstLabel = self.visibleLabels[0];
+    UIView *firstLabel = self.visibleYearViews[0];
     CGFloat topEdge = CGRectGetMinY([firstLabel frame]);
     
     NSLog(@"topEdge is %f", topEdge);
@@ -156,21 +164,21 @@
     }
     
     // remove labels that have fallen off right edge
-    lastLabel = [self.visibleLabels lastObject];
+    lastLabel = [self.visibleYearViews lastObject];
     while ([lastLabel frame].origin.y > maximumVisibleY)
     {
         [lastLabel removeFromSuperview];
-        [self.visibleLabels removeLastObject];
-        lastLabel = [self.visibleLabels lastObject];
+        [self.visibleYearViews removeLastObject];
+        lastLabel = [self.visibleYearViews lastObject];
     }
     
     // remove labels that have fallen off left edge
-    firstLabel = self.visibleLabels[0];
+    firstLabel = self.visibleYearViews[0];
     while (CGRectGetMaxY([firstLabel frame]) < minimumVisibleY)
     {
         [firstLabel removeFromSuperview];
-        [self.visibleLabels removeObjectAtIndex:0];
-        firstLabel = self.visibleLabels[0];
+        [self.visibleYearViews removeObjectAtIndex:0];
+        firstLabel = self.visibleYearViews[0];
     }
 }
 @end
