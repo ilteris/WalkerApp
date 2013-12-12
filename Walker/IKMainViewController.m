@@ -25,6 +25,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        
     }
     return self;
 }
@@ -33,6 +35,7 @@
 {
     [super viewDidLoad];
     
+    /*
     _transitioning          = NO;
     
  //   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
@@ -61,14 +64,10 @@
 	
 	self.scrollView.pagingEnabled = NO;
     
-	
-	
-	
 	[self applyNewIndex:0 pageController:_currentPage];
 	[self applyNewIndex:1 pageController:_nextPage];
-    
-
-    
+    */
+     
     
 	// Do any additional setup after loading the view.
 }
@@ -76,9 +75,6 @@
 
 - (void)applyNewIndex:(NSInteger)newIndex pageController:(IKMonthViewController *)monthViewController
 {
-	
-	
-	
 	NSInteger pageCount = 5;//[[ATPDatasource sharedInstance] numOfScenes];//[_currentPage numDoses];
 	BOOL outOfBounds = newIndex >= pageCount || newIndex < 0;
     
