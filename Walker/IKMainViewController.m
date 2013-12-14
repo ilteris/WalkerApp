@@ -163,6 +163,7 @@
     }
     //[self.currentPage updateTextViews:NO];
     //[self.nextPage updateTextViews:NO];
+
 }
 
 
