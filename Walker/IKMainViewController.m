@@ -52,8 +52,7 @@
      [self.scrollView addSubview:self.nextPage.view];
      
      
-     
-     
+    
      //  NSLog(@"[self.dataController.bookItemList count]; is %i", [self.dataController.bookItemList count]);
      NSInteger sceneCount = 2;//[[ATPDatasource sharedInstance] numOfScenes];
      if (sceneCount == 0)
