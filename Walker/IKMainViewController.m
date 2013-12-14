@@ -13,8 +13,11 @@
 @interface IKMainViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) NSMutableArray *visibleLabels;
-@property (nonatomic, strong) UIView *labelContainerView;
+
+
+@property (nonatomic, strong) IKMonthViewController *currentPage;
+@property (nonatomic, strong) IKMonthViewController *nextPage;
+@property (nonatomic, assign) BOOL transitioning;
 
 @end
 
@@ -35,160 +38,131 @@
 {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, 1136);
+  
+     _transitioning          = NO;
+     
+     //   UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+     self.currentPage = [self.storyboard instantiateViewControllerWithIdentifier:@"monthViewController"];
+     self.nextPage = [self.storyboard instantiateViewControllerWithIdentifier:@"monthViewController"];
+     
+     
+     
+     
+     [self.scrollView addSubview:self.currentPage.view];
+     [self.scrollView addSubview:self.nextPage.view];
+     
+     
+     
+     
+     //  NSLog(@"[self.dataController.bookItemList count]; is %i", [self.dataController.bookItemList count]);
+     NSInteger sceneCount = 2;//[[ATPDatasource sharedInstance] numOfScenes];
+     if (sceneCount == 0)
+     {
+     sceneCount = 1;
+     }
+     
+     self.scrollView.contentSize =CGSizeMake(self.scrollView.frame.size.width,         self.scrollView.frame.size.height * sceneCount);
+     self.scrollView.contentOffset = CGPointMake(0, 0);
+     
+     
+     self.scrollView.pagingEnabled = NO;
+     
+     [self applyNewIndex:0 pageController:_currentPage];
+     [self applyNewIndex:1 pageController:_nextPage];
     
-    _visibleLabels = [[NSMutableArray alloc] init];
     
-    _labelContainerView = [[UIView alloc] init];
-    self.labelContainerView.frame = CGRectMake(0, 0, self.scrollView.contentSize.width/2, self.scrollView.contentSize.height);
-    [self.scrollView addSubview:self.labelContainerView];
     
-    [self.labelContainerView setUserInteractionEnabled:NO];
+    // Do any additional setup after loading the view.
+}
+
+
+- (void)applyNewIndex:(NSInteger)newIndex pageController:(IKMonthViewController *)monthViewController
+{
+    NSInteger pageCount = 2;//[[ATPDatasource sharedInstance] numOfScenes];//[_currentPage numDoses];
+    BOOL outOfBounds = newIndex >= pageCount || newIndex < 0;
     
-    // hide horizontal scroll indicator so our recentering trick is not revealed
+    
+    if (!outOfBounds)
+    {
+        CGRect pageFrame = monthViewController.view.frame;
+        pageFrame.origin.y = self.scrollView.frame.size.height * newIndex;
+        pageFrame.origin.x = 0;
+        monthViewController.view.frame = pageFrame;
+    }
+    else
+    {
+        CGRect pageFrame = monthViewController.view.frame;
+        pageFrame.origin.x = 0;
+        monthViewController.view.frame = pageFrame;
+    }
+    
+    monthViewController.pageIndex = newIndex;
+    // _currentIndex = newIndex;
+    
 }
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    [self recenterIfNecessary];
     
-    // tile content in visible bounds
-    CGRect visibleBounds = [self.scrollView convertRect:[self.scrollView bounds] toView:self.labelContainerView];
-    CGFloat minimumVisibleY = CGRectGetMinY(visibleBounds);
-    CGFloat maximumVisibleY = CGRectGetMaxY(visibleBounds);
+    _transitioning = YES;
     
-    [self tileLabelsFromMinY:minimumVisibleY toMaxY:maximumVisibleY];
-  
-	
-}
-
-
-#pragma mark - Layout
-
-// recenter content periodically to achieve impression of infinite scrolling
-- (void)recenterIfNecessary
-{
-    CGPoint currentOffset = [self.scrollView contentOffset];
-    CGFloat contentHeight = [self.scrollView contentSize].height;
-    CGFloat centerOffsetY = (contentHeight - [self.scrollView bounds].size.height) / 2.0;
-    CGFloat distanceFromCenter = fabs(currentOffset.y - centerOffsetY);
     
-    if (distanceFromCenter > (contentHeight / 4.0))
+    CGFloat pageWidth = self.scrollView.frame.size.height;
+    float fractionalPage = self.scrollView.contentOffset.y / pageWidth;
+    
+    NSInteger lowerNumber = floor(fractionalPage);
+    NSInteger upperNumber = lowerNumber + 1;
+    
+    
+    if (lowerNumber == _currentPage.pageIndex)
     {
-        self.scrollView.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
-        
-        // move content by the same amount so it appears to stay still
-        for (UILabel *label in self.visibleLabels) {
-            CGPoint center = [self.labelContainerView convertPoint:label.center toView:self.scrollView];
-            center.y += (centerOffsetY - currentOffset.y);
-            label.center = [self.scrollView convertPoint:center toView:self.labelContainerView];
+            NSLog(@"lowerNumber == _currentPage.pageIndex");
+        if (upperNumber != _nextPage.pageIndex)
+        {
+             NSLog(@"upperNumber != _nextPage.pageIndex");
+            [self applyNewIndex:upperNumber pageController:_nextPage];
+            
         }
     }
-}
-
-
-
-#pragma mark - Label Tiling
-
-- (UIView *)insertLabel
-{
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 586)];
-    [label setNumberOfLines:3];
-    [label setText:@"1024 Block Street\nShaffer, CA\n95014"];
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 586)];
-    
-    
-    UICollectionViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"monthViewController"];
-    NSLog(@"controller.view is %@", controller.view);
-    //[controller.view setFrame:CGRectMake(0, 0, 320, 586)];
-    
-    imageView.image = [UIImage imageNamed:@"Slice 1.png"];
-    [self.labelContainerView addSubview:controller.view];
-    
-    return controller.view;
-}
-
-- (CGFloat)placeNewLabelOnBottom:(CGFloat)bottomEdge
-{
-    NSLog(@"here place new label on bottom");
-    UIView *label = [self insertLabel];
-    [self.visibleLabels addObject:label]; // add rightmost label at the end of the array
-    
-    CGRect frame = [label frame];
-    frame.origin.y = bottomEdge;
-    frame.origin.x = 0;//[self.labelContainerView bounds].size.height - frame.size.height;
-    [label setFrame:frame];
-    
-    return CGRectGetMaxY(frame);
-}
-
-- (CGFloat)placeNewLabelOnTop:(CGFloat)topEdge
-{
-    NSLog(@"here place new label on top");
-    UIView *label = [self insertLabel];
-    [self.visibleLabels insertObject:label atIndex:0]; // add leftmost label at the beginning of the array
-    
-    CGRect frame = [label frame];
-    frame.origin.y = topEdge - frame.size.height;
-    NSLog(@"frame.origin.y is %f", frame.origin.y);
-    frame.origin.x = 0;//[self.labelContainerView bounds].size.height - frame.size.height;
-    [label setFrame:frame];
-    
-    return CGRectGetMinY(frame);
-}
-
-- (void)tileLabelsFromMinY:(CGFloat)minimumVisibleY toMaxY:(CGFloat)maximumVisibleY
-{
-    // the upcoming tiling logic depends on there already being at least one label in the visibleLabels array, so
-    // to kick off the tiling we need to make sure there's at least one label
-    NSLog(@"self.visibleLabels is %@", self.visibleLabels);
-    
-    if ([self.visibleLabels count] == 0)
+    else if (upperNumber == _currentPage.pageIndex)
     {
-        [self placeNewLabelOnBottom:minimumVisibleY];
+        NSLog(@"upperNumber == _currentPage.pageIndex");
+        if (lowerNumber != _nextPage.pageIndex)
+        {
+            NSLog(@"lowerNumber != _nextPage.pageIndex");
+
+            [self applyNewIndex:lowerNumber pageController:_nextPage];
+        }
     }
-    
-    // add labels that are missing on right side
-    UILabel *lastLabel = [self.visibleLabels lastObject];
-    CGFloat bottomEdge = CGRectGetMaxY([lastLabel frame]);
-    NSLog(@"bottomEdge is %f", bottomEdge);
-    NSLog(@"maximumVisibleY is %f", maximumVisibleY);
-    
-    
-    while (bottomEdge < maximumVisibleY)
+    else
     {
-        bottomEdge = [self placeNewLabelOnBottom:bottomEdge];
+        if (lowerNumber == _nextPage.pageIndex)
+        {
+             NSLog(@"lowerNumber == _nextPage.pageIndex");
+            [self applyNewIndex:upperNumber pageController:_currentPage];
+            
+            
+            
+        }
+        else if (upperNumber == _nextPage.pageIndex)
+        {
+            NSLog(@"upperNumber == _nextPage.pageIndex");
+
+            [self applyNewIndex:lowerNumber pageController:_currentPage];
+            
+        }
+        else
+        {
+            NSLog(@"else");
+
+            [self applyNewIndex:lowerNumber pageController:_currentPage];
+            
+            [self applyNewIndex:upperNumber pageController:_nextPage];
+        }
     }
-    
-    // add labels that are missing on left side
-    UILabel *firstLabel = self.visibleLabels[0];
-    CGFloat topEdge = CGRectGetMinY([firstLabel frame]);
-    
-    NSLog(@"topEdge is %f", topEdge);
-    NSLog(@"minimumVisibleY is %f", minimumVisibleY);
-    while (topEdge > minimumVisibleY)
-    {
-        topEdge = [self placeNewLabelOnTop:topEdge];
-    }
-    
-    // remove labels that have fallen off right edge
-    lastLabel = [self.visibleLabels lastObject];
-    while ([lastLabel frame].origin.y > maximumVisibleY)
-    {
-        [lastLabel removeFromSuperview];
-        [self.visibleLabels removeLastObject];
-        lastLabel = [self.visibleLabels lastObject];
-    }
-    
-    // remove labels that have fallen off left edge
-    firstLabel = self.visibleLabels[0];
-    while (CGRectGetMaxY([firstLabel frame]) < minimumVisibleY)
-    {
-        [firstLabel removeFromSuperview];
-        [self.visibleLabels removeObjectAtIndex:0];
-        firstLabel = self.visibleLabels[0];
-    }
+    //[self.currentPage updateTextViews:NO];
+    //[self.nextPage updateTextViews:NO];
 }
 
 
