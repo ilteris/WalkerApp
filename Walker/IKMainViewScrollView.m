@@ -23,7 +23,7 @@
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
-
+        //TODO:This is the first todo.
         self.contentSize = CGSizeMake(self.frame.size.width, 1136);
         
         _visibleYearViews = [[NSMutableArray alloc] init];
@@ -58,7 +58,7 @@
         self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
         
         // move content by the same amount so it appears to stay still
-        for (UILabel *label in self.visibleYearViews) {
+        for (UIView *label in self.visibleYearViews) {
             CGPoint center = [self.labelContainerView convertPoint:label.center toView:self];
             center.y += (centerOffsetY - currentOffset.y);
             label.center = [self convertPoint:center toView:self.labelContainerView];
