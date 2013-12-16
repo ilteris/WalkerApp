@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IKMainViewController : UIViewController 
+@interface IKMonthPickerViewController : UIViewController 
 
 
 @end

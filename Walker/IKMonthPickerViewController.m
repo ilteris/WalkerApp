@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 ilteris kaplan. All rights reserved.
 //
 
-#import "IKMainViewController.h"
+#import "IKMonthPickerViewController.h"
 #import "IKMonthViewController.h"
+#import "IKMonthPickerView.h"
 
-
-@interface IKMainViewController ()
-
+@interface IKMonthPickerViewController ()
+@property(nonatomic, strong, readwrite) IBOutlet IKMonthPickerView *monthPickerView;
 
 @end
 
-@implementation IKMainViewController
+@implementation IKMonthPickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,12 +28,22 @@
     return self;
 }
 
+
+
+- (IKMonthPickerView *) monthPickerView {
+	if (!_monthPickerView) {
+		_monthPickerView = [IKMonthPickerView new];
+		_monthPickerView.frame = self.view.bounds;
+		_monthPickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+	}
+	return _monthPickerView;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-  
-    
+
     
     // Do any additional setup after loading the view.
 }
