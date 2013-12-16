@@ -27,6 +27,7 @@
 		A277D05218567A7A001DF08B /* IKMonthViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D05118567A7A001DF08B /* IKMonthViewCalendarCell.m */; };
 		A277D05418567BE0001DF08B /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A277D05318567BDF001DF08B /* slice1.jpg */; };
 		A2BAF345185E9945006D3B35 /* IKMonthPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */; };
+		A2BAF348185EA3B0006D3B35 /* IKMonthPickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		A277D05318567BDF001DF08B /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
 		A2BAF343185E9944006D3B35 /* IKMonthPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthPickerView.h; path = Walker/IKMonthPickerView.h; sourceTree = "<group>"; };
 		A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthPickerView.m; path = Walker/IKMonthPickerView.m; sourceTree = "<group>"; };
+		A2BAF346185EA3B0006D3B35 /* IKMonthPickerCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthPickerCollectionView.h; path = Walker/IKMonthPickerCollectionView.h; sourceTree = "<group>"; };
+		A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthPickerCollectionView.m; path = Walker/IKMonthPickerCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				A2063D341833C5BD00827203 /* IKMonthPickerViewController.m */,
 				A2BAF343185E9944006D3B35 /* IKMonthPickerView.h */,
 				A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */,
+				A2BAF346185EA3B0006D3B35 /* IKMonthPickerCollectionView.h */,
+				A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -284,6 +289,7 @@
 				A2BAF345185E9945006D3B35 /* IKMonthPickerView.m in Sources */,
 				A277D029185666EB001DF08B /* main.m in Sources */,
 				A2188E7B185A6AAE00D13EC5 /* IKMainViewScrollView.m in Sources */,
+				A2BAF348185EA3B0006D3B35 /* IKMonthPickerCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

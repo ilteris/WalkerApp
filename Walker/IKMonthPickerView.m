@@ -7,6 +7,7 @@
 //
 
 #import "IKMonthPickerView.h"
+#import "IKMonthPickerCollectionView.h"
 
 typedef struct {
 	NSUInteger year;
@@ -15,7 +16,8 @@ typedef struct {
 } DFDatePickerDate;
 
 
-@interface IKMonthPickerView ()
+@interface IKMonthPickerView () < UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (nonatomic, readonly, strong) NSCalendar *calendar;
 @property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
 @property (nonatomic, readonly, assign) DFDatePickerDate toDate;
@@ -25,6 +27,11 @@ typedef struct {
 @end
 
 @implementation IKMonthPickerView
+@synthesize collectionView = _collectionView;
+@synthesize calendar = _calendar;
+@synthesize fromDate = _fromDate;
+@synthesize toDate = _toDate;
+@synthesize collectionViewLayout = _collectionViewLayout;
 
 
 
@@ -67,13 +74,57 @@ typedef struct {
 			return components;
 		})()) toDate:now options:0]];
         
-        NSLog(@"_toDate is %i", _toDate.day);
+        NSLog(@"_toDate is %i - %i - %i", _toDate.day, _toDate.month, _toDate.year);
+        
+        NSLog(@"_fromDate is %i - %i - %i", _fromDate.day, _fromDate.month, _fromDate.year);
 		
 	}
 	
 	return self;
 	
 }
+
+
+
+- (UICollectionView *) collectionView {
+    
+	if (!_collectionView) {
+		_collectionView = [[IKMonthPickerCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.collectionViewLayout];
+		_collectionView.backgroundColor = [UIColor whiteColor];
+		_collectionView.dataSource = self;
+		_collectionView.delegate = self;
+		_collectionView.showsVerticalScrollIndicator = NO;
+		_collectionView.showsHorizontalScrollIndicator = NO;
+		[_collectionView registerClass:[IKMonthPickerViewCell class] forCellWithReuseIdentifier:IKMonthPickerViewCellIdentifier];
+		[_collectionView registerClass:[IKMonthPickerMonthHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthPickerViewMonthHeaderIdentifier];
+        
+		[_collectionView reloadData];
+	}
+	
+	return _collectionView;
+    
+}
+
+
+- (UICollectionViewFlowLayout *) collectionViewLayout {
+	
+	//	Hard key these things.
+	//	44 * 7 + 2 * 6 = 320; this is how the Calendar.app works
+	//	and this also avoids the “one pixel” confusion which might or might not work
+	//	If you need to decorate, key decorative views in.
+	
+	if (!_collectionViewLayout) {
+		_collectionViewLayout = [UICollectionViewFlowLayout new];
+		_collectionViewLayout.headerReferenceSize = (CGSize){ 320, 64 };
+		_collectionViewLayout.itemSize = (CGSize){ 44, 44 };
+		_collectionViewLayout.minimumLineSpacing = 2.0f;
+		_collectionViewLayout.minimumInteritemSpacing = 2.0f;
+	}
+	
+	return _collectionViewLayout;
+    
+}
+
 
 
 - (DFDatePickerDate) pickerDateFromDate:(NSDate *)date {
