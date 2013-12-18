@@ -8,7 +8,7 @@
 
 #import "IKMonthPickerView.h"
 #import "IKMonthPickerCollectionView.h"
-
+#import "IKMonthViewCalendarCell.h"
 typedef struct {
 	NSUInteger year;
 	NSUInteger month;
@@ -95,8 +95,8 @@ typedef struct {
 		_collectionView.delegate = self;
 		_collectionView.showsVerticalScrollIndicator = NO;
 		_collectionView.showsHorizontalScrollIndicator = NO;
-		[_collectionView registerClass:[IKMonthPickerViewCell class] forCellWithReuseIdentifier:IKMonthPickerViewCellIdentifier];
-		[_collectionView registerClass:[IKMonthPickerMonthHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthPickerViewMonthHeaderIdentifier];
+		[_collectionView registerClass:[IKMonthViewCalendarCell class] forCellWithReuseIdentifier:IKMonthViewCalendarCellIdentifier];
+		[_collectionView registerClass:[IKMonthViewCalendarHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthPickerViewMonthHeaderIdentifier];
         
 		[_collectionView reloadData];
 	}
