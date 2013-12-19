@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IKMonthViewCalendarCell : UICollectionViewCell
+@interface IKMainViewCalendarCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

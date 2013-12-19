@@ -6,17 +6,14 @@
 //  Copyright (c) 2013 ilteris kaplan. All rights reserved.
 //
 
-#import "IKMonthViewController.h"
-#import "IKMonthViewCalendarCell.h"
+#import "IKMainViewController.h"
+#import "IKMainViewCalendarCell.h"
 
-@interface IKMonthViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface IKMainViewController ()
 
 @end
 
-@implementation IKMonthViewController
-
-
+@implementation IKMainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +30,7 @@
 {
     [super viewDidLoad];
     
-    [self.collectionView registerClass:[IKMonthViewCalendarCell class] forCellWithReuseIdentifier:@"IKMonthViewCalendarCell"];
-    [self.collectionView reloadData];
+	// Do any additional setup after loading the view.
 }
 
 
@@ -46,18 +42,13 @@
     return 12;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    return 1;
-}
-
 // The cell that is returned must be retrieved from a call to - dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"here");
-    IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IKMonthViewCalendarCell" forIndexPath:indexPath];
-    //bring back
-    
-
+   
+    IKMainViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
+    UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
+    cell.imageView.image = image;
     return cell;
 }
 

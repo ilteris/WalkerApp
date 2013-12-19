@@ -6,27 +6,18 @@
 //  Copyright (c) 2013 ilteris kaplan. All rights reserved.
 //
 
-#import "IKMonthViewCalendarCell.h"
+#import "IKMainViewCalendarCell.h"
 
-@interface IKMonthViewCalendarCell ()
-@property (nonatomic, readonly, strong) UIImageView *imageView;
-@end
-
-
-@implementation IKMonthViewCalendarCell
-//TODO:This is where we setup the monthly view.
-//let's start with simple uiimageview.
+@implementation IKMainViewCalendarCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-       
     }
     return self;
 }
-
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -17,46 +17,51 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hs-Nd-9AF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-747" y="-2"/>
+            <point key="canvasLocation" x="-699" y="33"/>
         </scene>
-        <!--Month View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="7Qo-PX-fO5">
             <objects>
-                <viewController id="Tno-eg-YmN" customClass="IKMonthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainViewController" id="Tno-eg-YmN" customClass="IKMainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hpj-Q3-ktb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="vCF-BW-YKp" customClass="IKMonthPickerCollectionView">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="vCF-BW-YKp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="six-pk-Gdl">
-                                    <size key="itemSize" width="117" height="117"/>
+                                    <size key="itemSize" width="100" height="108"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IKMonthViewCalendarCell" id="H3w-M6-aJi" customClass="IKMonthViewCalendarCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mainViewCalendarCell" id="H3w-M6-aJi" customClass="IKMainViewCalendarCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="108"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iYS-yU-ScA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="108"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="customSize" width="100" height="108"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="iYS-yU-ScA" id="gTc-QK-geQ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="Tno-eg-YmN" id="vcT-XV-WTz"/>
-                                    <outlet property="delegate" destination="Tno-eg-YmN" id="93Z-0y-imN"/>
+                                    <outlet property="dataSource" destination="Tno-eg-YmN" id="wp5-Vq-vjK"/>
+                                    <outlet property="delegate" destination="Tno-eg-YmN" id="ULN-Da-c5I"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -64,13 +69,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="MFh-Tr-fbx"/>
                     <connections>
-                        <outlet property="collectionView" destination="vCF-BW-YKp" id="axr-Tb-jIp"/>
                         <outlet property="view" destination="hpj-Q3-ktb" id="d7s-FD-Deu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zad-i1-wiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="-2"/>
+            <point key="canvasLocation" x="-274" y="38"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
