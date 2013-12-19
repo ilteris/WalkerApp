@@ -8,7 +8,14 @@
 
 #import "IKMonthViewCalendarCell.h"
 
+@interface IKMonthViewCalendarCell ()
+@property (nonatomic, readonly, strong) UIImageView *imageView;
+@end
+
+
 @implementation IKMonthViewCalendarCell
+//TODO:This is where we setup the monthly view.
+//let's start with simple uiimageview.
 
 - (id)initWithFrame:(CGRect)frame
 {
