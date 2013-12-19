@@ -44,7 +44,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slice 1.png" id="iYS-yU-ScA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iYS-yU-ScA">
                                                     <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -73,9 +73,6 @@
             <point key="canvasLocation" x="-199" y="-2"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Slice 1.png" width="640" height="1156"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
