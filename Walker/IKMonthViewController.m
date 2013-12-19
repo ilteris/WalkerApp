@@ -47,8 +47,7 @@
 {
     IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
     //bring back
-    UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
-    cell.imageView.image = image;
+
     return cell;
 }
 

@@ -135,6 +135,88 @@ static NSString * const IKMonthViewCalendarHeaderIdentifier = @"monthHeader";
 
 
 
+
+
+- (IKMonthViewCalendarCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	
+	IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:IKMonthViewCalendarCellIdentifier forIndexPath:indexPath];
+	
+	
+	
+	return cell;
+	
+}
+
+
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	
+	return [self.calendar components:NSMonthCalendarUnit fromDate:[self dateFromPickerDate:self.fromDate] toDate:[self dateFromPickerDate:self.toDate] options:0].month;
+	
+}
+
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	
+	return 7 * [self numberOfWeeksForMonthOfDate:[self dateForFirstDayInSection:section]];
+	
+}
+
+
+
+- (NSDate *) dateForFirstDayInSection:(NSInteger)section {
+    
+	return [self.calendar dateByAddingComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.month = section;
+		return dateComponents;
+	})()) toDate:[self dateFromPickerDate:self.fromDate] options:0];
+    
+}
+
+- (NSUInteger) numberOfWeeksForMonthOfDate:(NSDate *)date {
+    
+	NSDate *firstDayInMonth = [self.calendar dateFromComponents:[self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:date]];
+	
+	NSDate *lastDayInMonth = [self.calendar dateByAddingComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.month = 1;
+		dateComponents.day = -1;
+		return dateComponents;
+	})()) toDate:firstDayInMonth options:0];
+	
+	NSDate *fromSunday = [self.calendar dateFromComponents:((^{
+		NSDateComponents *dateComponents = [self.calendar components:NSWeekOfYearCalendarUnit|NSYearForWeekOfYearCalendarUnit fromDate:firstDayInMonth];
+		dateComponents.weekday = 1;
+		return dateComponents;
+	})())];
+	
+	NSDate *toSunday = [self.calendar dateFromComponents:((^{
+		NSDateComponents *dateComponents = [self.calendar components:NSWeekOfYearCalendarUnit|NSYearForWeekOfYearCalendarUnit fromDate:lastDayInMonth];
+		dateComponents.weekday = 1;
+		return dateComponents;
+	})())];
+	
+	return 1 + [self.calendar components:NSWeekCalendarUnit fromDate:fromSunday toDate:toSunday options:0].week;
+	
+}
+
+
+- (NSDate *) dateFromPickerDate:(DFDatePickerDate)dateStruct {
+	return [self.calendar dateFromComponents:[self dateComponentsFromPickerDate:dateStruct]];
+}
+
+- (NSDateComponents *) dateComponentsFromPickerDate:(DFDatePickerDate)dateStruct {
+	NSDateComponents *components = [NSDateComponents new];
+	components.year = dateStruct.year;
+	components.month = dateStruct.month;
+	components.day = dateStruct.day;
+	return components;
+}
+
+
+
+
 - (DFDatePickerDate) pickerDateFromDate:(NSDate *)date {
 	NSDateComponents *components = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
 	return (DFDatePickerDate) {

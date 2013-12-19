@@ -22,9 +22,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
+        self.imageView.image = image;
     }
     return self;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
