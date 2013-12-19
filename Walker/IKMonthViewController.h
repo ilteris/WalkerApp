@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IKMonthViewController : UICollectionViewController <UICollectionViewDataSource>
-@property (nonatomic, assign) NSInteger pageIndex;
+@interface IKMonthViewController : UIViewController
 
 
 @end

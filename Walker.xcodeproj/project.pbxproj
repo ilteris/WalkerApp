@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2063D351833C5BD00827203 /* IKMonthPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2063D341833C5BD00827203 /* IKMonthPickerViewController.m */; };
 		A2188E7D185A6B5200D13EC5 /* Slice 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2188E7C185A6B5200D13EC5 /* Slice 1.png */; };
-		A222FDB01862757600F3A304 /* IKMonthViewCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A222FDAF1862757600F3A304 /* IKMonthViewCalendarHeader.m */; };
+		A222FDB31862988700F3A304 /* IKMonthViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A222FDB21862988700F3A304 /* IKMonthViewCalendarCell.m */; };
 		A277D01D185666EB001DF08B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01C185666EB001DF08B /* Foundation.framework */; };
 		A277D01F185666EB001DF08B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01E185666EB001DF08B /* CoreGraphics.framework */; };
 		A277D021185666EB001DF08B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D020185666EB001DF08B /* UIKit.framework */; };
@@ -24,9 +23,7 @@
 		A277D042185666EB001DF08B /* WalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D041185666EB001DF08B /* WalkerTests.m */; };
 		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
 		A277D04F1856757A001DF08B /* IKMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D04E1856757A001DF08B /* IKMonthViewController.m */; };
-		A277D05218567A7A001DF08B /* IKMonthViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D05118567A7A001DF08B /* IKMonthViewCalendarCell.m */; };
 		A277D05418567BE0001DF08B /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A277D05318567BDF001DF08B /* slice1.jpg */; };
-		A2BAF345185E9945006D3B35 /* IKMonthPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */; };
 		A2BAF348185EA3B0006D3B35 /* IKMonthPickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */; };
 /* End PBXBuildFile section */
 
@@ -41,11 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A2063D331833C5BD00827203 /* IKMonthPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthPickerViewController.h; path = Walker/IKMonthPickerViewController.h; sourceTree = "<group>"; };
-		A2063D341833C5BD00827203 /* IKMonthPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthPickerViewController.m; path = Walker/IKMonthPickerViewController.m; sourceTree = "<group>"; };
 		A2188E7C185A6B5200D13EC5 /* Slice 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slice 1.png"; sourceTree = "<group>"; };
-		A222FDAE1862757600F3A304 /* IKMonthViewCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthViewCalendarHeader.h; path = Walker/IKMonthViewCalendarHeader.h; sourceTree = "<group>"; };
-		A222FDAF1862757600F3A304 /* IKMonthViewCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthViewCalendarHeader.m; path = Walker/IKMonthViewCalendarHeader.m; sourceTree = "<group>"; };
+		A222FDB11862988700F3A304 /* IKMonthViewCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMonthViewCalendarCell.h; sourceTree = "<group>"; };
+		A222FDB21862988700F3A304 /* IKMonthViewCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMonthViewCalendarCell.m; sourceTree = "<group>"; };
 		A277D019185666EB001DF08B /* Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A277D01C185666EB001DF08B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A277D01E185666EB001DF08B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,11 +60,7 @@
 		A277D04B1856732E001DF08B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Walker/Main.storyboard; sourceTree = "<group>"; };
 		A277D04D1856757A001DF08B /* IKMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthViewController.h; path = Walker/IKMonthViewController.h; sourceTree = "<group>"; };
 		A277D04E1856757A001DF08B /* IKMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthViewController.m; path = Walker/IKMonthViewController.m; sourceTree = "<group>"; };
-		A277D05018567A7A001DF08B /* IKMonthViewCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthViewCalendarCell.h; path = Walker/IKMonthViewCalendarCell.h; sourceTree = "<group>"; };
-		A277D05118567A7A001DF08B /* IKMonthViewCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthViewCalendarCell.m; path = Walker/IKMonthViewCalendarCell.m; sourceTree = "<group>"; };
 		A277D05318567BDF001DF08B /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
-		A2BAF343185E9944006D3B35 /* IKMonthPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthPickerView.h; path = Walker/IKMonthPickerView.h; sourceTree = "<group>"; };
-		A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthPickerView.m; path = Walker/IKMonthPickerView.m; sourceTree = "<group>"; };
 		A2BAF346185EA3B0006D3B35 /* IKMonthPickerCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMonthPickerCollectionView.h; path = Walker/IKMonthPickerCollectionView.h; sourceTree = "<group>"; };
 		A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMonthPickerCollectionView.m; path = Walker/IKMonthPickerCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,18 +95,12 @@
 				A277D04B1856732E001DF08B /* Main.storyboard */,
 				A2188E7C185A6B5200D13EC5 /* Slice 1.png */,
 				A277D05318567BDF001DF08B /* slice1.jpg */,
+				A222FDB11862988700F3A304 /* IKMonthViewCalendarCell.h */,
+				A222FDB21862988700F3A304 /* IKMonthViewCalendarCell.m */,
 				A277D04D1856757A001DF08B /* IKMonthViewController.h */,
 				A277D04E1856757A001DF08B /* IKMonthViewController.m */,
-				A2063D331833C5BD00827203 /* IKMonthPickerViewController.h */,
-				A2063D341833C5BD00827203 /* IKMonthPickerViewController.m */,
-				A2BAF343185E9944006D3B35 /* IKMonthPickerView.h */,
-				A2BAF344185E9944006D3B35 /* IKMonthPickerView.m */,
 				A2BAF346185EA3B0006D3B35 /* IKMonthPickerCollectionView.h */,
 				A2BAF347185EA3B0006D3B35 /* IKMonthPickerCollectionView.m */,
-				A277D05018567A7A001DF08B /* IKMonthViewCalendarCell.h */,
-				A277D05118567A7A001DF08B /* IKMonthViewCalendarCell.m */,
-				A222FDAE1862757600F3A304 /* IKMonthViewCalendarHeader.h */,
-				A222FDAF1862757600F3A304 /* IKMonthViewCalendarHeader.m */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -282,13 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A222FDB01862757600F3A304 /* IKMonthViewCalendarHeader.m in Sources */,
 				A277D04F1856757A001DF08B /* IKMonthViewController.m in Sources */,
-				A277D05218567A7A001DF08B /* IKMonthViewCalendarCell.m in Sources */,
 				A277D02D185666EB001DF08B /* IKAppDelegate.m in Sources */,
-				A2063D351833C5BD00827203 /* IKMonthPickerViewController.m in Sources */,
-				A2BAF345185E9945006D3B35 /* IKMonthPickerView.m in Sources */,
 				A277D029185666EB001DF08B /* main.m in Sources */,
+				A222FDB31862988700F3A304 /* IKMonthViewCalendarCell.m in Sources */,
 				A2BAF348185EA3B0006D3B35 /* IKMonthPickerCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

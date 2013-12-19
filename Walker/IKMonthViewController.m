@@ -9,7 +9,8 @@
 #import "IKMonthViewController.h"
 #import "IKMonthViewCalendarCell.h"
 
-@interface IKMonthViewController ()
+@interface IKMonthViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -31,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.collectionView registerClass:[IKMonthViewCalendarCell class] forCellWithReuseIdentifier:@"IKMonthViewCalendarCell"];
+    [self.collectionView reloadData];
 }
 
 
@@ -42,11 +46,17 @@
     return 12;
 }
 
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+    return 1;
+}
+
 // The cell that is returned must be retrieved from a call to - dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
+    NSLog(@"here");
+    IKMonthViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IKMonthViewCalendarCell" forIndexPath:indexPath];
     //bring back
+    
 
     return cell;
 }

@@ -11,10 +11,7 @@
 @implementation IKMonthPickerCollectionView
 
 - (void) layoutSubviews {
-	
-	
 	[super layoutSubviews];
-    
 }
 
 @end
