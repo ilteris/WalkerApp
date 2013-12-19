@@ -91,9 +91,23 @@ static NSString * const IKMonthViewCalendarHeaderIdentifier = @"monthHeader";
 }
 
 
+- (void) layoutSubviews {
+	
+	[super layoutSubviews];
+	
+    NSLog(@"layoutSubviews");
+	self.collectionView.frame = self.bounds;
+	if (!self.collectionView.superview) {
+		[self addSubview:self.collectionView];
+	}
+	
+}
+
+
 
 - (UICollectionView *) collectionView {
     
+    NSLog(@"collectionView");
 	if (!_collectionView) {
 		_collectionView = [[IKMonthPickerCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.collectionViewLayout];
 		_collectionView.backgroundColor = [UIColor whiteColor];
@@ -104,8 +118,7 @@ static NSString * const IKMonthViewCalendarHeaderIdentifier = @"monthHeader";
 		[_collectionView registerClass:[IKMonthViewCalendarCell class] forCellWithReuseIdentifier:IKMonthViewCalendarCellIdentifier];
 		[_collectionView registerClass:[IKMonthViewCalendarHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthViewCalendarHeaderIdentifier];
         
-      
-        
+              
 		[_collectionView reloadData];
 	}
 	
@@ -151,14 +164,14 @@ static NSString * const IKMonthViewCalendarHeaderIdentifier = @"monthHeader";
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 	
-	return [self.calendar components:NSMonthCalendarUnit fromDate:[self dateFromPickerDate:self.fromDate] toDate:[self dateFromPickerDate:self.toDate] options:0].month;
+	return 1;
 	
 }
 
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	
-	return 7 * [self numberOfWeeksForMonthOfDate:[self dateForFirstDayInSection:section]];
+	return 12;
 	
 }
 

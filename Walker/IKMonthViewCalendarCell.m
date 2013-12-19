@@ -24,6 +24,7 @@
         // Initialization code
         UIImage* image = [UIImage imageNamed:@"slice1.jpg"];
         self.imageView.image = image;
+        [self addSubview:self.imageView];
     }
     return self;
 }

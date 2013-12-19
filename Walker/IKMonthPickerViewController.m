@@ -28,23 +28,10 @@
     return self;
 }
 
-
-
-- (IKMonthPickerView *) monthPickerView {
-	if (!_monthPickerView) {
-		_monthPickerView = [IKMonthPickerView new];
-		_monthPickerView.frame = self.view.bounds;
-		_monthPickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-	}
-	return _monthPickerView;
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    
     // Do any additional setup after loading the view.
 }
 
