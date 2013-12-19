@@ -9,11 +9,17 @@
 #import "IKMonthPickerView.h"
 #import "IKMonthPickerCollectionView.h"
 #import "IKMonthViewCalendarCell.h"
+#import "IKMonthViewCalendarHeader.h"
+
 typedef struct {
 	NSUInteger year;
 	NSUInteger month;
 	NSUInteger day;
 } DFDatePickerDate;
+
+
+static NSString * const IKMonthViewCalendarCellIdentifier = @"dateCell";
+static NSString * const IKMonthViewCalendarHeaderIdentifier = @"monthHeader";
 
 
 @interface IKMonthPickerView () < UICollectionViewDataSource, UICollectionViewDelegate>
@@ -96,7 +102,9 @@ typedef struct {
 		_collectionView.showsVerticalScrollIndicator = NO;
 		_collectionView.showsHorizontalScrollIndicator = NO;
 		[_collectionView registerClass:[IKMonthViewCalendarCell class] forCellWithReuseIdentifier:IKMonthViewCalendarCellIdentifier];
-		[_collectionView registerClass:[IKMonthViewCalendarHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthPickerViewMonthHeaderIdentifier];
+		[_collectionView registerClass:[IKMonthViewCalendarHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:IKMonthViewCalendarHeaderIdentifier];
+        
+      
         
 		[_collectionView reloadData];
 	}
