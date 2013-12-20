@@ -24,6 +24,7 @@
 		A277D042185666EB001DF08B /* WalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D041185666EB001DF08B /* WalkerTests.m */; };
 		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
 		A277D05418567BE0001DF08B /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A277D05318567BDF001DF08B /* slice1.jpg */; };
+		A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		A277D041185666EB001DF08B /* WalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkerTests.m; sourceTree = "<group>"; };
 		A277D04B1856732E001DF08B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Walker/Main.storyboard; sourceTree = "<group>"; };
 		A277D05318567BDF001DF08B /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
+		A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMultipleLineLayout.h; path = Walker/IKMultipleLineLayout.h; sourceTree = "<group>"; };
+		A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMultipleLineLayout.m; path = Walker/IKMultipleLineLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				A222FDB41863927500F3A304 /* IKMainViewCalendarCell.m */,
 				A222FDB51863927500F3A304 /* IKMainViewController.h */,
 				A222FDB71863927500F3A304 /* IKMainViewController.m */,
+				A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */,
+				A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */,
 				A277D04B1856732E001DF08B /* Main.storyboard */,
 				A2188E7C185A6B5200D13EC5 /* Slice 1.png */,
 				A277D05318567BDF001DF08B /* slice1.jpg */,
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */,
 				A277D02D185666EB001DF08B /* IKAppDelegate.m in Sources */,
 				A222FDB91863927500F3A304 /* IKMainViewController.m in Sources */,
 				A222FDB81863927500F3A304 /* IKMainViewCalendarCell.m in Sources */,
