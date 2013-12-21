@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2188E7D185A6B5200D13EC5 /* Slice 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2188E7C185A6B5200D13EC5 /* Slice 1.png */; };
-		A222FDB81863927500F3A304 /* IKMainViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A222FDB41863927500F3A304 /* IKMainViewCalendarCell.m */; };
-		A222FDB91863927500F3A304 /* IKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A222FDB71863927500F3A304 /* IKMainViewController.m */; };
 		A277D01D185666EB001DF08B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01C185666EB001DF08B /* Foundation.framework */; };
 		A277D01F185666EB001DF08B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D01E185666EB001DF08B /* CoreGraphics.framework */; };
 		A277D021185666EB001DF08B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A277D020185666EB001DF08B /* UIKit.framework */; };
@@ -23,8 +20,12 @@
 		A277D040185666EB001DF08B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A277D03E185666EB001DF08B /* InfoPlist.strings */; };
 		A277D042185666EB001DF08B /* WalkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A277D041185666EB001DF08B /* WalkerTests.m */; };
 		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
-		A277D05418567BE0001DF08B /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A277D05318567BDF001DF08B /* slice1.jpg */; };
 		A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */; };
+		A2E3790C18665249001E5EE6 /* IKMainViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */; };
+		A2E379111866528D001E5EE6 /* IKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790D1866528D001E5EE6 /* IKMainViewController.m */; };
+		A2E379121866528D001E5EE6 /* IKMainViewCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790F1866528D001E5EE6 /* IKMainViewCalendarCell.m */; };
+		A2E37915186652B6001E5EE6 /* slice1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2E37913186652B6001E5EE6 /* slice1.jpg */; };
+		A2E37916186652B6001E5EE6 /* Slice 1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E37914186652B6001E5EE6 /* Slice 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,11 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A2188E7C185A6B5200D13EC5 /* Slice 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slice 1.png"; sourceTree = "<group>"; };
-		A222FDB41863927500F3A304 /* IKMainViewCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewCalendarCell.m; sourceTree = "<group>"; };
-		A222FDB51863927500F3A304 /* IKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewController.h; sourceTree = "<group>"; };
-		A222FDB61863927500F3A304 /* IKMainViewCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewCalendarCell.h; sourceTree = "<group>"; };
-		A222FDB71863927500F3A304 /* IKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewController.m; sourceTree = "<group>"; };
 		A277D019185666EB001DF08B /* Walker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A277D01C185666EB001DF08B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A277D01E185666EB001DF08B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,9 +56,16 @@
 		A277D03F185666EB001DF08B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A277D041185666EB001DF08B /* WalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkerTests.m; sourceTree = "<group>"; };
 		A277D04B1856732E001DF08B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Walker/Main.storyboard; sourceTree = "<group>"; };
-		A277D05318567BDF001DF08B /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
 		A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMultipleLineLayout.h; path = Walker/IKMultipleLineLayout.h; sourceTree = "<group>"; };
 		A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMultipleLineLayout.m; path = Walker/IKMultipleLineLayout.m; sourceTree = "<group>"; };
+		A2E3790A18665249001E5EE6 /* IKMainViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewCollectionView.h; sourceTree = "<group>"; };
+		A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewCollectionView.m; sourceTree = "<group>"; };
+		A2E3790D1866528D001E5EE6 /* IKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewController.m; sourceTree = "<group>"; };
+		A2E3790E1866528D001E5EE6 /* IKMainViewCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewCalendarCell.h; sourceTree = "<group>"; };
+		A2E3790F1866528D001E5EE6 /* IKMainViewCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewCalendarCell.m; sourceTree = "<group>"; };
+		A2E379101866528D001E5EE6 /* IKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewController.h; sourceTree = "<group>"; };
+		A2E37913186652B6001E5EE6 /* slice1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slice1.jpg; sourceTree = "<group>"; };
+		A2E37914186652B6001E5EE6 /* Slice 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slice 1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,15 +95,9 @@
 		A277D010185666EB001DF08B = {
 			isa = PBXGroup;
 			children = (
-				A222FDB61863927500F3A304 /* IKMainViewCalendarCell.h */,
-				A222FDB41863927500F3A304 /* IKMainViewCalendarCell.m */,
-				A222FDB51863927500F3A304 /* IKMainViewController.h */,
-				A222FDB71863927500F3A304 /* IKMainViewController.m */,
 				A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */,
 				A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */,
 				A277D04B1856732E001DF08B /* Main.storyboard */,
-				A2188E7C185A6B5200D13EC5 /* Slice 1.png */,
-				A277D05318567BDF001DF08B /* slice1.jpg */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -131,6 +128,14 @@
 		A277D022185666EB001DF08B /* Walker */ = {
 			isa = PBXGroup;
 			children = (
+				A2E37913186652B6001E5EE6 /* slice1.jpg */,
+				A2E37914186652B6001E5EE6 /* Slice 1.png */,
+				A2E3790D1866528D001E5EE6 /* IKMainViewController.m */,
+				A2E3790E1866528D001E5EE6 /* IKMainViewCalendarCell.h */,
+				A2E3790F1866528D001E5EE6 /* IKMainViewCalendarCell.m */,
+				A2E379101866528D001E5EE6 /* IKMainViewController.h */,
+				A2E3790A18665249001E5EE6 /* IKMainViewCollectionView.h */,
+				A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */,
 				A277D02B185666EB001DF08B /* IKAppDelegate.h */,
 				A277D02C185666EB001DF08B /* IKAppDelegate.m */,
 				A277D02E185666EB001DF08B /* Images.xcassets */,
@@ -246,8 +251,8 @@
 			files = (
 				A277D04C1856732E001DF08B /* Main.storyboard in Resources */,
 				A277D027185666EB001DF08B /* InfoPlist.strings in Resources */,
-				A2188E7D185A6B5200D13EC5 /* Slice 1.png in Resources */,
-				A277D05418567BE0001DF08B /* slice1.jpg in Resources */,
+				A2E37916186652B6001E5EE6 /* Slice 1.png in Resources */,
+				A2E37915186652B6001E5EE6 /* slice1.jpg in Resources */,
 				A277D02F185666EB001DF08B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,10 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E3790C18665249001E5EE6 /* IKMainViewCollectionView.m in Sources */,
+				A2E379121866528D001E5EE6 /* IKMainViewCalendarCell.m in Sources */,
 				A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */,
 				A277D02D185666EB001DF08B /* IKAppDelegate.m in Sources */,
-				A222FDB91863927500F3A304 /* IKMainViewController.m in Sources */,
-				A222FDB81863927500F3A304 /* IKMainViewCalendarCell.m in Sources */,
+				A2E379111866528D001E5EE6 /* IKMainViewController.m in Sources */,
 				A277D029185666EB001DF08B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
