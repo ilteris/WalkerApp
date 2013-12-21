@@ -10,22 +10,25 @@
 
 @implementation IKMainViewCollectionView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+-(void)layoutSubviews {
+    
+    
+    [super layoutSubviews];
+    
+    NSLog(@"IKMainViewCollectionView layoutSubviews");
+    
+    CGPoint currentOffset = self.contentOffset;
+    CGFloat contentHeight = self.contentSize.height;
+    CGFloat centerOffsetY = (contentHeight - self.bounds.size.height)/ 2.0;
+    CGFloat distanceFromCenterY = fabsf(currentOffset.y - centerOffsetY);
+    
+   
+    if (distanceFromCenterY > contentHeight/4.0) {
+        self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
+    }
+     
+    
 }
-*/
 
 @end

@@ -56,8 +56,8 @@
 		A277D03F185666EB001DF08B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A277D041185666EB001DF08B /* WalkerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalkerTests.m; sourceTree = "<group>"; };
 		A277D04B1856732E001DF08B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Walker/Main.storyboard; sourceTree = "<group>"; };
-		A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKMultipleLineLayout.h; path = Walker/IKMultipleLineLayout.h; sourceTree = "<group>"; };
-		A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKMultipleLineLayout.m; path = Walker/IKMultipleLineLayout.m; sourceTree = "<group>"; };
+		A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMultipleLineLayout.h; sourceTree = "<group>"; };
+		A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMultipleLineLayout.m; sourceTree = "<group>"; };
 		A2E3790A18665249001E5EE6 /* IKMainViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewCollectionView.h; sourceTree = "<group>"; };
 		A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewCollectionView.m; sourceTree = "<group>"; };
 		A2E3790D1866528D001E5EE6 /* IKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMainViewController.m; sourceTree = "<group>"; };
@@ -95,8 +95,6 @@
 		A277D010185666EB001DF08B = {
 			isa = PBXGroup;
 			children = (
-				A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */,
-				A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */,
 				A277D04B1856732E001DF08B /* Main.storyboard */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
@@ -128,17 +126,18 @@
 		A277D022185666EB001DF08B /* Walker */ = {
 			isa = PBXGroup;
 			children = (
-				A2E37913186652B6001E5EE6 /* slice1.jpg */,
-				A2E37914186652B6001E5EE6 /* Slice 1.png */,
-				A2E3790D1866528D001E5EE6 /* IKMainViewController.m */,
+				A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */,
+				A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */,
 				A2E3790E1866528D001E5EE6 /* IKMainViewCalendarCell.h */,
 				A2E3790F1866528D001E5EE6 /* IKMainViewCalendarCell.m */,
 				A2E379101866528D001E5EE6 /* IKMainViewController.h */,
+				A2E3790D1866528D001E5EE6 /* IKMainViewController.m */,
 				A2E3790A18665249001E5EE6 /* IKMainViewCollectionView.h */,
 				A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */,
 				A277D02B185666EB001DF08B /* IKAppDelegate.h */,
 				A277D02C185666EB001DF08B /* IKAppDelegate.m */,
 				A277D02E185666EB001DF08B /* Images.xcassets */,
+				A2E37917186652EC001E5EE6 /* Assets */,
 				A277D023185666EB001DF08B /* Supporting Files */,
 			);
 			path = Walker;
@@ -171,6 +170,15 @@
 				A277D03E185666EB001DF08B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A2E37917186652EC001E5EE6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A2E37913186652B6001E5EE6 /* slice1.jpg */,
+				A2E37914186652B6001E5EE6 /* Slice 1.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
