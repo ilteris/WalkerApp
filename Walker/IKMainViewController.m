@@ -8,8 +8,20 @@
 
 #import "IKMainViewController.h"
 #import "IKMainViewCalendarCell.h"
+#import "IKMainViewCollectionView.h"
 
-@interface IKMainViewController ()
+
+typedef struct {
+	NSUInteger year;
+	NSUInteger month;
+	NSUInteger day;
+} DFDatePickerDate;
+
+
+@interface IKMainViewController () <IKMainViewCollectionViewDelegate>
+@property (nonatomic, readonly, strong) NSCalendar *calendar;
+@property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
+@property (nonatomic, readonly, assign) DFDatePickerDate toDate;
 
 @end
 
@@ -20,10 +32,37 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
+        _fromDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
+			NSDateComponents *components = [NSDateComponents new];
+			components.month = -6;
+			return components;
+		})()) toDate:now options:0]];
+		
+		_toDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
+			NSDateComponents *components = [NSDateComponents new];
+			components.month = 6;
+			return components;
+		})()) toDate:now options:0]];
+        
+
+        
+        
+        
     }
     return self;
 }
 
+
+- (DFDatePickerDate) pickerDateFromDate:(NSDate *)date {
+	NSDateComponents *components = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+	return (DFDatePickerDate) {
+		components.year,
+		components.month,
+		components.day
+	};
+}
 
 
 - (void)viewDidLoad
@@ -34,6 +73,10 @@
 }
 
 
+- (void) mainCollectionViewWillLayoutSubviews:(IKMainViewCollectionView *)mainCollectionView {
+    NSLog(@"collectionView contentOffset is %@", NSStringFromCGPoint(mainCollectionView.contentOffset));
+}
+    
 
 #pragma mark - Collection View Data Sources
 
@@ -41,6 +84,7 @@
 {
     return 36;
 }
+
 
 // The cell that is returned must be retrieved from a call to - dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

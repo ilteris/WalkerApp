@@ -9,14 +9,14 @@
 #import "IKMainViewCollectionView.h"
 
 @implementation IKMainViewCollectionView
-
+@dynamic delegate;
 
 -(void)layoutSubviews {
     
     
     [super layoutSubviews];
     
-    NSLog(@"IKMainViewCollectionView layoutSubviews");
+  //  NSLog(@"IKMainViewCollectionView layoutSubviews");
     
     CGPoint currentOffset = self.contentOffset;
     CGFloat contentHeight = self.contentSize.height;
@@ -27,7 +27,9 @@
     if (distanceFromCenterY > contentHeight/4.0) {
         self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
     }
-     
+    
+    [self.delegate mainCollectionViewWillLayoutSubviews:self];
+    
     
 }
 

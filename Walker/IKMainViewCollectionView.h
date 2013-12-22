@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class IKMainViewCollectionView;
+@protocol IKMainViewCollectionViewDelegate <UICollectionViewDelegate>
+
+- (void) mainCollectionViewWillLayoutSubviews:(IKMainViewCollectionView *)mainCollectionView;
+
+@end
+
+
+
 @interface IKMainViewCollectionView : UICollectionView
+@property (nonatomic, assign) id <IKMainViewCollectionViewDelegate> delegate;
 
 @end
