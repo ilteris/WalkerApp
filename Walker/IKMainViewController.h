@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IKMainViewController : UIViewController <UICollectionViewDataSource>
+@interface IKMainViewController : UIViewController 
 
 @end
