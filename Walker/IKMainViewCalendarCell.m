@@ -27,20 +27,20 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
     {
         // Do something
    
-    
+        NSLog(@"initWithCoder");
     _calendar = [NSCalendar currentCalendar];
     
     NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
     
     _fromDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
         NSDateComponents *components = [NSDateComponents new];
-        components.month = -6;
+        components.month = -1;
         return components;
     })()) toDate:now options:0]];
     
     _toDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
         NSDateComponents *components = [NSDateComponents new];
-        components.month = 6;
+        components.month = 1;
         return components;
     })()) toDate:now options:0]];
  }
@@ -66,7 +66,7 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
 		NSDateFormatter *dateFormatter = [self.calendar df_dateFormatterNamed:@"calendarMonthHeader" withConstructor:^{
 			NSDateFormatter *dateFormatter = [NSDateFormatter new];
 			dateFormatter.calendar = self.calendar;
-			dateFormatter.dateFormat = [dateFormatter.class dateFormatFromTemplate:@"yyyyLLLL" options:0 locale:[NSLocale currentLocale]];
+			dateFormatter.dateFormat = [dateFormatter.class dateFormatFromTemplate:@"LLLL" options:0 locale:[NSLocale currentLocale]];
 			return dateFormatter;
 		}];
 		

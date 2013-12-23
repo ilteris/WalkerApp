@@ -82,8 +82,8 @@
 
 		CGContextFillRect(context, self.bounds);
 		
-		UIFont *font = [UIFont boldSystemFontOfSize:5.0f];
-		CGRect textBounds = (CGRect){ 0.0f, 1.0f, 10.0f, 5.0f };
+		UIFont *font = [UIFont boldSystemFontOfSize:7.0f];
+		CGRect textBounds = (CGRect){ 0.0f, 1.0f, 10.0f, 12.0f };
 		
 		CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
 		[[NSString stringWithFormat:@"%i", self.date.day] drawInRect:textBounds withFont:font lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
