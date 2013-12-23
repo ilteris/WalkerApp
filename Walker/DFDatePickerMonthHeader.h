@@ -2,6 +2,6 @@
 
 @interface DFDatePickerMonthHeader : UICollectionReusableView
 
-@property(weak) IBOutlet UILabel *yearLabel;
+@property(weak) IBOutlet UILabel *textLabel;
 
 @end

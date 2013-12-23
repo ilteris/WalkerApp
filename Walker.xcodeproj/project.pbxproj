@@ -22,6 +22,8 @@
 		A277D04C1856732E001DF08B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A277D04B1856732E001DF08B /* Main.storyboard */; };
 		A28E0EE118669E5000A09F09 /* NSCalendar+DFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E0EE018669E5000A09F09 /* NSCalendar+DFAdditions.m */; };
 		A28E0EE418669E8200A09F09 /* DFDatePickerMonthHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E0EE318669E8200A09F09 /* DFDatePickerMonthHeader.m */; };
+		A28E0EE71867E0AE00A09F09 /* DFDatePickerDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E0EE61867E0AE00A09F09 /* DFDatePickerDayCell.m */; };
+		A28E0EEB1867E8C400A09F09 /* IKDatePickerYearHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A28E0EEA1867E8C400A09F09 /* IKDatePickerYearHeader.m */; };
 		A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */; };
 		A2E3790C18665249001E5EE6 /* IKMainViewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790B18665249001E5EE6 /* IKMainViewCollectionView.m */; };
 		A2E379111866528D001E5EE6 /* IKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E3790D1866528D001E5EE6 /* IKMainViewController.m */; };
@@ -62,6 +64,11 @@
 		A28E0EE018669E5000A09F09 /* NSCalendar+DFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+DFAdditions.m"; sourceTree = "<group>"; };
 		A28E0EE218669E8200A09F09 /* DFDatePickerMonthHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFDatePickerMonthHeader.h; sourceTree = "<group>"; };
 		A28E0EE318669E8200A09F09 /* DFDatePickerMonthHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFDatePickerMonthHeader.m; sourceTree = "<group>"; };
+		A28E0EE51867E0AE00A09F09 /* DFDatePickerDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFDatePickerDayCell.h; sourceTree = "<group>"; };
+		A28E0EE61867E0AE00A09F09 /* DFDatePickerDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFDatePickerDayCell.m; sourceTree = "<group>"; };
+		A28E0EE81867E32900A09F09 /* DayFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DayFlow.h; sourceTree = "<group>"; };
+		A28E0EE91867E8C400A09F09 /* IKDatePickerYearHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IKDatePickerYearHeader.h; path = Walker/IKDatePickerYearHeader.h; sourceTree = "<group>"; };
+		A28E0EEA1867E8C400A09F09 /* IKDatePickerYearHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IKDatePickerYearHeader.m; path = Walker/IKDatePickerYearHeader.m; sourceTree = "<group>"; };
 		A2E3790718650DFE001E5EE6 /* IKMultipleLineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMultipleLineLayout.h; sourceTree = "<group>"; };
 		A2E3790818650DFE001E5EE6 /* IKMultipleLineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMultipleLineLayout.m; sourceTree = "<group>"; };
 		A2E3790A18665249001E5EE6 /* IKMainViewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMainViewCollectionView.h; sourceTree = "<group>"; };
@@ -102,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				A277D04B1856732E001DF08B /* Main.storyboard */,
+				A28E0EE91867E8C400A09F09 /* IKDatePickerYearHeader.h */,
+				A28E0EEA1867E8C400A09F09 /* IKDatePickerYearHeader.m */,
 				A277D022185666EB001DF08B /* Walker */,
 				A277D03B185666EB001DF08B /* WalkerTests */,
 				A277D01B185666EB001DF08B /* Frameworks */,
@@ -132,6 +141,9 @@
 		A277D022185666EB001DF08B /* Walker */ = {
 			isa = PBXGroup;
 			children = (
+				A28E0EE81867E32900A09F09 /* DayFlow.h */,
+				A28E0EE51867E0AE00A09F09 /* DFDatePickerDayCell.h */,
+				A28E0EE61867E0AE00A09F09 /* DFDatePickerDayCell.m */,
 				A28E0EE218669E8200A09F09 /* DFDatePickerMonthHeader.h */,
 				A28E0EE318669E8200A09F09 /* DFDatePickerMonthHeader.m */,
 				A28E0EDF18669E5000A09F09 /* NSCalendar+DFAdditions.h */,
@@ -291,12 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2E3790C18665249001E5EE6 /* IKMainViewCollectionView.m in Sources */,
+				A28E0EEB1867E8C400A09F09 /* IKDatePickerYearHeader.m in Sources */,
 				A28E0EE418669E8200A09F09 /* DFDatePickerMonthHeader.m in Sources */,
 				A2E379121866528D001E5EE6 /* IKMainViewCalendarCell.m in Sources */,
 				A28E0EE118669E5000A09F09 /* NSCalendar+DFAdditions.m in Sources */,
 				A2E3790918650DFE001E5EE6 /* IKMultipleLineLayout.m in Sources */,
 				A277D02D185666EB001DF08B /* IKAppDelegate.m in Sources */,
 				A2E379111866528D001E5EE6 /* IKMainViewController.m in Sources */,
+				A28E0EE71867E0AE00A09F09 /* DFDatePickerDayCell.m in Sources */,
 				A277D029185666EB001DF08B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

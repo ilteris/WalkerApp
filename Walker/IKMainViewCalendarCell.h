@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DayFlow.h"
 
 @interface IKMainViewCalendarCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, readonly, strong) NSCalendar *calendar;
+@property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
+@property (nonatomic, readonly, assign) DFDatePickerDate toDate;
 
 @end
