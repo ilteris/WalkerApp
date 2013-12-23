@@ -19,21 +19,8 @@
   //  NSLog(@"IKMainViewCollectionView layoutSubviews");
     
     
-    CGPoint currentOffset = self.contentOffset;
-    CGFloat contentHeight = self.contentSize.height;
-    CGFloat centerOffsetY = (contentHeight - self.bounds.size.height)/ 2.0;
-    CGFloat distanceFromCenterY = fabsf(currentOffset.y - centerOffsetY);
     
-   
-    if (distanceFromCenterY > contentHeight/4.0) {
-        self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
-    }
-   
-    CGFloat minimumVisibleY = CGRectGetMinY(self.bounds);
-    CGFloat maximumVisibleY = CGRectGetMaxY(self.bounds);
-   // NSLog(@"maximumvisibleY is %f and minimumVisibleY is %f", maximumVisibleY, minimumVisibleY);
-    
-    [self.delegate mainCollectionViewWillLayoutSubviews:self];
+       [self.delegate mainCollectionViewWillLayoutSubviews:self];
     
     
 }

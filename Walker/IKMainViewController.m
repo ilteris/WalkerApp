@@ -71,12 +71,30 @@ typedef struct {
 
 
 - (void) mainCollectionViewWillLayoutSubviews:(IKMainViewCollectionView *)mainCollectionView {
-    NSLog(@"collectionView contentOffset is %@", NSStringFromCGPoint(mainCollectionView.contentOffset));
+    
+    
+    CGPoint currentOffset = mainCollectionView.contentOffset;
+    CGFloat contentHeight = mainCollectionView.contentSize.height;
+    CGFloat centerOffsetY = (contentHeight - mainCollectionView.bounds.size.height)/ 2.0;
+    CGFloat distanceFromCenterY = fabsf(currentOffset.y - centerOffsetY);
+    
+    
+    if (distanceFromCenterY > contentHeight/4.0) {
+        mainCollectionView.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
+    }
     
     CGFloat minimumVisibleY = CGRectGetMinY(mainCollectionView.bounds);
     CGFloat maximumVisibleY = CGRectGetMaxY(mainCollectionView.bounds);
+    // NSLog(@"maximumvisibleY is %f and minimumVisibleY is %f", maximumVisibleY, minimumVisibleY);
+    
+
+    
+    
+    NSLog(@"collectionView contentOffset is %@", NSStringFromCGPoint(mainCollectionView.contentOffset));
+    
+   
     NSLog(@"maximumvisibleY is %f and minimumVisibleY is %f", maximumVisibleY, minimumVisibleY);
-    [self tileLabelsFromMinY:minimumVisibleY toMaxY:maximumVisibleY];
+   // [self tileLabelsFromMinY:minimumVisibleY toMaxY:maximumVisibleY];
 
 }
 
