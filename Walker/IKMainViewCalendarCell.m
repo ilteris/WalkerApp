@@ -27,7 +27,6 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
     {
         // Do something
    
-        NSLog(@"initWithCoder");
     _calendar = [NSCalendar currentCalendar];
     
     NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
