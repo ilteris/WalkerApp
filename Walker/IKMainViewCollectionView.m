@@ -12,15 +12,10 @@
 @dynamic delegate;
 
 -(void)layoutSubviews {
-    
-    
     [super layoutSubviews];
     
-  //  NSLog(@"IKMainViewCollectionView layoutSubviews");
-    
-    
-    
-       [self.delegate mainCollectionViewWillLayoutSubviews:self];
+    NSLog(@"IKMainViewCollectionView layoutSubviews");
+    [self.delegate mainCollectionViewWillLayoutSubviews:self];
     
     
 }

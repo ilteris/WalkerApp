@@ -14,4 +14,8 @@
 @property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
 @property (nonatomic, readonly, assign) DFDatePickerDate toDate;
 
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
+- (void)setupCell;
+
 @end

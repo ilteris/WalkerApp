@@ -19,30 +19,12 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
 
 @implementation IKMainViewCalendarCell
 
-
-
 - (id)initWithCoder:(NSCoder*)aDecoder
 {
     if(self = [super initWithCoder:aDecoder])
     {
         // Do something
-   
-    _calendar = [NSCalendar currentCalendar];
-    
-    NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
-    
-    _fromDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
-        NSDateComponents *components = [NSDateComponents new];
-        components.month = -1;
-        return components;
-    })()) toDate:now options:0]];
-    
-    _toDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
-        NSDateComponents *components = [NSDateComponents new];
-        components.month = 1;
-        return components;
-    })()) toDate:now options:0]];
- }
+   }
     
     
     return self;
@@ -50,6 +32,26 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
 
 
 
+- (void)setupCell {
+    
+    _calendar = [NSCalendar currentCalendar];
+    
+    NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
+    NSLog(@"_indexPath is %@", self.indexPath);
+    _fromDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        
+        components.month = self.indexPath.row;
+        return components;
+    })()) toDate:now options:0]];
+    
+    _toDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        components.month = self.indexPath.row;
+        return components;
+    })()) toDate:now options:0]];
+
+}
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	
@@ -73,7 +75,7 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
 		}];
 		
 		NSDate *formattedDate = [self dateForFirstDayInSection:indexPath.section];
-        NSLog(@"[dateFormatter stringFromDate:formattedDate]; is %@", [dateFormatter stringFromDate:formattedDate]);
+        NSLog(@"[dateFormatter stringFromDate:formattedDate] is %@", [dateFormatter stringFromDate:formattedDate]);
 		monthHeader.textLabel.text = [dateFormatter stringFromDate:formattedDate];
 		
 		return monthHeader;

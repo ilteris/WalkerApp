@@ -28,10 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
-        
-        
-        
         
     }
     return self;
@@ -79,13 +75,12 @@
     
 	if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
 		
-		IKDatePickerYearHeader *monthHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IKDatePickerYearHeader" forIndexPath:indexPath];
+		IKDatePickerYearHeader *yearHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IKDatePickerYearHeader" forIndexPath:indexPath];
+			
 		
-				
+		yearHeader.textLabel.text = @"2014";//[dateFormatter stringFromDate:formattedDate];
 		
-		monthHeader.textLabel.text = @"2014";//[dateFormatter stringFromDate:formattedDate];
-		
-		return monthHeader;
+		return yearHeader;
 		
 	}
 	
@@ -97,14 +92,18 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12;
+    return 12; //this needs to be dynamic?
 }
 
 
 // The cell that is returned must be retrieved from a call to - dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     IKMainViewCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mainViewCalendarCell" forIndexPath:indexPath];
+    cell.indexPath = indexPath;
+    //set the month of the cell here.
+    [cell setupCell];
     return cell;
 }
 
