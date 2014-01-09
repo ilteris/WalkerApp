@@ -47,7 +47,7 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
     
     _toDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
         NSDateComponents *components = [NSDateComponents new];
-        components.month = self.indexPath.row;
+        components.month = 1;
         return components;
     })()) toDate:now options:0]];
 

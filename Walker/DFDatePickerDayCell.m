@@ -58,35 +58,32 @@
 	//	and draw it, but since that’s only one bitmap instead of 35-odd (7 weeks)
 	//	that’s mostly okay.
 	
-	self.imageView.alpha = self.enabled ? 1.0f : 0.25f;
+	self.imageView.alpha = self.enabled ? 1.0f : 0.1f;
 	
 	self.imageView.image = [[self class] fetchObjectForKey:[[self class] cacheKeyForPickerDate:self.date] withCreator:^{
 		
 		UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, self.window.screen.scale);
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		
-#if 0
-		
-		//	Generate a random color
-		//	https://gist.github.com/kylefox/1689973
-		CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-		CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+
+        
+        CGFloat hue = ( 50 / 256.0 );  //  0.0 to 1.0
+		CGFloat saturation = ( 1 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
 		CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
 		CGContextSetFillColorWithColor(context, [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0f].CGColor);
+        
 		
-#else
+		//CGContextSetFillColorWithColor(context, [UIColor colorWithRed:53.0f/256.0f green:145.0f/256.0f blue:195.0f/256.0f alpha:1.0f].CGColor);
 		
-		CGContextSetFillColorWithColor(context, [UIColor colorWithRed:53.0f/256.0f green:145.0f/256.0f blue:195.0f/256.0f alpha:1.0f].CGColor);
-		
-#endif
+
 
 		CGContextFillRect(context, self.bounds);
 		
-		UIFont *font = [UIFont boldSystemFontOfSize:7.0f];
+		//UIFont *font = [UIFont boldSystemFontOfSize:7.0f];
 		CGRect textBounds = (CGRect){ 0.0f, 1.0f, 10.0f, 12.0f };
 		
 		CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-		[[NSString stringWithFormat:@"%i", self.date.day] drawInRect:textBounds withFont:font lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
+	//	[[NSString stringWithFormat:@"%i", self.date.day] drawInRect:textBounds withFont:font lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
 		
 		UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
