@@ -17,8 +17,8 @@
 
 @interface IKMainViewController () <UICollectionViewDataSource, IKMainViewCollectionViewDelegate>
 @property (nonatomic, readonly, strong) NSCalendar *calendar;
-@property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
-@property (nonatomic, readonly, assign) DFDatePickerDate toDate;
+@property (nonatomic, readonly, assign) NSDate* fromDate;
+@property (nonatomic, readonly, assign) NSDate* toDate;
 @property (weak, nonatomic) IBOutlet IKMainViewCollectionView *collectionView;
 
 @end
@@ -29,13 +29,14 @@
 @synthesize toDate = _toDate;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder*)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        
+    if(self = [super initWithCoder:aDecoder])
+    {
+        // Do something
+        _calendar = [NSCalendar currentCalendar];
     }
+    
     return self;
 }
 
@@ -54,8 +55,27 @@
 	
 	NSInteger numberOfSections = 1;
     
-    //[self.calendar components:NSMonthCalendarUnit fromDate:[self dateFromPickerDate:self.fromDate] toDate:[self dateFromPickerDate:self.toDate] options:0].month;
-    NSLog(@"nummberofsections are %i", numberOfSections);
+    NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit fromDate:[NSDate date]]];
+
+    //add 5 years from now on
+    //remove 5 years from now on and return that back as numberOfSection
+    _fromDate = [_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        components.year = -5;
+        return components;
+    })()) toDate:now options:0];
+    
+    _toDate = [_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        components.year = 5;
+        return components;
+    })()) toDate:now options:0];
+    
+    NSInteger numberrOfSections = [self.calendar components:NSCalendarUnitYear fromDate:self.fromDate toDate:self.toDate options:0].year;
+
+    NSLog(@"numberrOfSections are %i",numberrOfSections);
+
+    
     return numberOfSections;
     
 }
@@ -128,39 +148,10 @@
 	
 	NSLog(@"shiftDatesByComponents");
     
-    UICollectionView *cv = self.collectionView;
-	UICollectionViewFlowLayout *cvLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-	
-	NSArray *visibleCells = [self.collectionView visibleCells];
-	if (![visibleCells count])
-		return;
-	
-	NSIndexPath *fromIndexPath = [cv indexPathForCell:((UICollectionViewCell *)visibleCells[0]) ];
-	NSInteger fromSection = fromIndexPath.section;
-	NSDate *fromSectionOfDate = [self dateForFirstDayInSection:fromSection];
-	CGPoint fromSectionOrigin = [self.view convertPoint:[cvLayout layoutAttributesForItemAtIndexPath:fromIndexPath].frame.origin fromView:cv];
-	
-	_fromDate = [self pickerDateFromDate:[self.calendar dateByAddingComponents:components toDate:[self dateFromPickerDate:self.fromDate] options:0]];
-	_toDate = [self pickerDateFromDate:[self.calendar dateByAddingComponents:components toDate:[self dateFromPickerDate:self.toDate] options:0]];
-    
-	
-	NSInteger toSection = [self.calendar components:NSMonthCalendarUnit fromDate:[self dateForFirstDayInSection:0] toDate:fromSectionOfDate options:0].month;
-	UICollectionViewLayoutAttributes *toAttrs = [cvLayout layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:toSection]];
-	CGPoint toSectionOrigin = [self.view convertPoint:toAttrs.frame.origin fromView:cv];
+   
 	
     
 	
-}
-
-
-- (NSDate *) dateForFirstDayInSection:(NSInteger)section {
-    
-	return [self.calendar dateByAddingComponents:((^{
-		NSDateComponents *dateComponents = [NSDateComponents new];
-		dateComponents.month = section;
-		return dateComponents;
-	})()) toDate:[self dateFromPickerDate:self.fromDate] options:0];
-    
 }
 
 
