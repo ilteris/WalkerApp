@@ -53,7 +53,6 @@
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 	
-	NSInteger numberOfSections = 1;
     
     NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit fromDate:[NSDate date]]];
 
@@ -71,10 +70,7 @@
         return components;
     })()) toDate:now options:0];
     
-    NSInteger numberrOfSections = [self.calendar components:NSCalendarUnitYear fromDate:self.fromDate toDate:self.toDate options:0].year;
-
-    NSLog(@"numberrOfSections are %i",numberrOfSections);
-
+    NSInteger numberOfSections = [self.calendar components:NSCalendarUnitYear fromDate:self.fromDate toDate:self.toDate options:0].year;
     
     return numberOfSections;
     
@@ -123,20 +119,20 @@
 
 
 - (void) appendPastDates {
-    
+    NSLog(@"appendPastDates");
 	[self shiftDatesByComponents:((^{
 		NSDateComponents *dateComponents = [NSDateComponents new];
-		dateComponents.month = -6;
+		dateComponents.year = -5;
 		return dateComponents;
 	})())];
     
 }
 
 - (void) appendFutureDates {
-	
+    NSLog(@"appendFutureDates");
 	[self shiftDatesByComponents:((^{
 		NSDateComponents *dateComponents = [NSDateComponents new];
-		dateComponents.month = 6;
+		dateComponents.year = 5;
 		return dateComponents;
 	})())];
 	
@@ -145,36 +141,55 @@
 
 
 - (void) shiftDatesByComponents:(NSDateComponents *)components {
-	
+	/*
 	NSLog(@"shiftDatesByComponents");
+    UICollectionView *cv = self.collectionView;
+	UICollectionViewFlowLayout *cvLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+
+    NSArray *visibleCells = [self.collectionView visibleCells];
+	if (![visibleCells count])
+		return;
+
+    NSIndexPath *fromIndexPath = [cv indexPathForCell:((UICollectionViewCell *)visibleCells[0]) ];
+	NSInteger fromSection = fromIndexPath.section;
+	NSDate *fromSectionOfDate = [self dateForFirstYearInSection:fromSection];
+	CGPoint fromSectionOrigin = [self.view convertPoint:[cvLayout layoutAttributesForItemAtIndexPath:fromIndexPath].frame.origin fromView:cv];
+    NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit fromDate:[NSDate date]]];
+
     
-   
-	
+    _fromDate = [_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        components.year = -5;
+        return components;
+    })()) toDate:now options:0];
+    
+    _toDate = [_calendar dateByAddingComponents:((^{
+        NSDateComponents *components = [NSDateComponents new];
+        components.year = 5;
+        return components;
+    })()) toDate:now options:0];
+    
     
 	
+	NSInteger toSection = [self.calendar components:NSMonthCalendarUnit fromDate:[self dateForFirstYearInSection:0] toDate:fromSectionOfDate options:0].month;
+	UICollectionViewLayoutAttributes *toAttrs = [cvLayout layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:toSection]];
+	CGPoint toSectionOrigin = [self.view convertPoint:toAttrs.frame.origin fromView:cv];
+	
+    */
 }
 
 
-- (NSDate *) dateFromPickerDate:(DFDatePickerDate)dateStruct {
-	return [self.calendar dateFromComponents:[self dateComponentsFromPickerDate:dateStruct]];
+- (NSDate *) dateForFirstYearInSection:(NSInteger)section {
+    
+	return [self.calendar dateByAddingComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.year = 5;
+		return dateComponents;
+	})()) toDate:self.fromDate options:0];
+    
 }
 
-- (NSDateComponents *) dateComponentsFromPickerDate:(DFDatePickerDate)dateStruct {
-	NSDateComponents *components = [NSDateComponents new];
-	components.year = dateStruct.year;
-	components.month = dateStruct.month;
-	components.day = dateStruct.day;
-	return components;
-}
 
-- (DFDatePickerDate) pickerDateFromDate:(NSDate *)date {
-	NSDateComponents *components = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
-	return (DFDatePickerDate) {
-		components.year,
-		components.month,
-		components.day
-	};
-}
 
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
@@ -185,20 +200,17 @@
 		yearHeader.textLabel.text = @"2014";//[dateFormatter stringFromDate:formattedDate];
 		
 		return yearHeader;
-		
 	}
-	
 	return nil;
     
 }
-
 
 
 #pragma mark - Collection View Data Sources
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12; //this needs to be dynamic?
+    return 12;  //each section have 12 items. this is static.
 }
 
 
