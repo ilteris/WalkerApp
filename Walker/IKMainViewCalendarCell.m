@@ -36,7 +36,7 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
     _calendar = [NSCalendar currentCalendar];
     
     NSDate *now = [_calendar dateFromComponents:[_calendar components:NSYearCalendarUnit|NSMonthCalendarUnit fromDate:[NSDate date]]];
-    NSLog(@"_indexPath is %@", self.indexPath);
+    //NSLog(@"_indexPath is %@", self.indexPath);
     _fromDate = [self pickerDateFromDate:[_calendar dateByAddingComponents:((^{
         NSDateComponents *components = [NSDateComponents new];
         
@@ -74,7 +74,7 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
 		}];
 		
 		NSDate *formattedDate = [self dateForFirstDayInSection:indexPath.section];
-        NSLog(@"[dateFormatter stringFromDate:formattedDate] is %@", [dateFormatter stringFromDate:formattedDate]);
+       // NSLog(@"[dateFormatter stringFromDate:formattedDate] is %@", [dateFormatter stringFromDate:formattedDate]);
 		monthHeader.textLabel.text = [dateFormatter stringFromDate:formattedDate];
 		
 		return monthHeader;

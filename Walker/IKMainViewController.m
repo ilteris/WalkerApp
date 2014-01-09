@@ -16,12 +16,18 @@
 
 
 @interface IKMainViewController () <UICollectionViewDataSource, IKMainViewCollectionViewDelegate>
-
+@property (nonatomic, readonly, strong) NSCalendar *calendar;
+@property (nonatomic, readonly, assign) DFDatePickerDate fromDate;
+@property (nonatomic, readonly, assign) DFDatePickerDate toDate;
 @property (weak, nonatomic) IBOutlet IKMainViewCollectionView *collectionView;
 
 @end
 
 @implementation IKMainViewController
+@synthesize calendar = _calendar;
+@synthesize fromDate = _fromDate;
+@synthesize toDate = _toDate;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,9 +49,23 @@
 }
 
 
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	
+	NSInteger numberOfSections = 1;
+    
+    //[self.calendar components:NSMonthCalendarUnit fromDate:[self dateFromPickerDate:self.fromDate] toDate:[self dateFromPickerDate:self.toDate] options:0].month;
+    NSLog(@"nummberofsections are %i", numberOfSections);
+    return numberOfSections;
+    
+}
+
+
+
 - (void) mainCollectionViewWillLayoutSubviews:(IKMainViewCollectionView *)mainCollectionView {
     
     
+    /*
     CGPoint currentOffset = mainCollectionView.contentOffset;
     CGFloat contentHeight = mainCollectionView.contentSize.height;
     CGFloat centerOffsetY = (contentHeight - mainCollectionView.bounds.size.height)/ 2.0;
@@ -66,10 +86,104 @@
    
     NSLog(@"maximumvisibleY is %f and minimumVisibleY is %f", maximumVisibleY, minimumVisibleY);
    // [self tileLabelsFromMinY:minimumVisibleY toMaxY:maximumVisibleY];
+    */
+    if (mainCollectionView.contentOffset.y < 0.0f) {
+        	[self appendPastDates];
+	}
+	
+	if (mainCollectionView.contentOffset.y > (mainCollectionView.contentSize.height - CGRectGetHeight(mainCollectionView.bounds))) {
+        	[self appendFutureDates];
+	}
+    
+    
 
 }
 
 
+
+
+- (void) appendPastDates {
+    
+	[self shiftDatesByComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.month = -6;
+		return dateComponents;
+	})())];
+    
+}
+
+- (void) appendFutureDates {
+	
+	[self shiftDatesByComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.month = 6;
+		return dateComponents;
+	})())];
+	
+}
+
+
+
+- (void) shiftDatesByComponents:(NSDateComponents *)components {
+	
+	NSLog(@"shiftDatesByComponents");
+    
+    UICollectionView *cv = self.collectionView;
+	UICollectionViewFlowLayout *cvLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	
+	NSArray *visibleCells = [self.collectionView visibleCells];
+	if (![visibleCells count])
+		return;
+	
+	NSIndexPath *fromIndexPath = [cv indexPathForCell:((UICollectionViewCell *)visibleCells[0]) ];
+	NSInteger fromSection = fromIndexPath.section;
+	NSDate *fromSectionOfDate = [self dateForFirstDayInSection:fromSection];
+	CGPoint fromSectionOrigin = [self.view convertPoint:[cvLayout layoutAttributesForItemAtIndexPath:fromIndexPath].frame.origin fromView:cv];
+	
+	_fromDate = [self pickerDateFromDate:[self.calendar dateByAddingComponents:components toDate:[self dateFromPickerDate:self.fromDate] options:0]];
+	_toDate = [self pickerDateFromDate:[self.calendar dateByAddingComponents:components toDate:[self dateFromPickerDate:self.toDate] options:0]];
+    
+	
+	NSInteger toSection = [self.calendar components:NSMonthCalendarUnit fromDate:[self dateForFirstDayInSection:0] toDate:fromSectionOfDate options:0].month;
+	UICollectionViewLayoutAttributes *toAttrs = [cvLayout layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:toSection]];
+	CGPoint toSectionOrigin = [self.view convertPoint:toAttrs.frame.origin fromView:cv];
+	
+    
+	
+}
+
+
+- (NSDate *) dateForFirstDayInSection:(NSInteger)section {
+    
+	return [self.calendar dateByAddingComponents:((^{
+		NSDateComponents *dateComponents = [NSDateComponents new];
+		dateComponents.month = section;
+		return dateComponents;
+	})()) toDate:[self dateFromPickerDate:self.fromDate] options:0];
+    
+}
+
+
+- (NSDate *) dateFromPickerDate:(DFDatePickerDate)dateStruct {
+	return [self.calendar dateFromComponents:[self dateComponentsFromPickerDate:dateStruct]];
+}
+
+- (NSDateComponents *) dateComponentsFromPickerDate:(DFDatePickerDate)dateStruct {
+	NSDateComponents *components = [NSDateComponents new];
+	components.year = dateStruct.year;
+	components.month = dateStruct.month;
+	components.day = dateStruct.day;
+	return components;
+}
+
+- (DFDatePickerDate) pickerDateFromDate:(NSDate *)date {
+	NSDateComponents *components = [self.calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+	return (DFDatePickerDate) {
+		components.year,
+		components.month,
+		components.day
+	};
+}
 
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
@@ -77,7 +191,6 @@
 		
 		IKDatePickerYearHeader *yearHeader = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"IKDatePickerYearHeader" forIndexPath:indexPath];
 			
-		
 		yearHeader.textLabel.text = @"2014";//[dateFormatter stringFromDate:formattedDate];
 		
 		return yearHeader;
@@ -87,6 +200,8 @@
 	return nil;
     
 }
+
+
 
 #pragma mark - Collection View Data Sources
 
