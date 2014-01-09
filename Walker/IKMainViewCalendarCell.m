@@ -26,7 +26,6 @@ static NSString * const DFDatePickerViewMonthHeaderIdentifier = @"monthHeader";
         // Do something
    }
     
-    
     return self;
 }
 
